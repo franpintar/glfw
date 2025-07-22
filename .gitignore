@@ -102,3 +102,8 @@ tests/triangle-vulkan
 tests/window
 tests/windows
 
+# Binaries
+bin*/
+
+# Misc
+.idea
