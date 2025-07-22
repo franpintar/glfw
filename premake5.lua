@@ -37,10 +37,8 @@ project "GLFW"
 			"src/linux_joystick.c"
 		}
 
-		defines
-		{
-			"_GLFW_X11"
-		}
+		defines	{"_GLFW_X11"}
+		links { "X11", "Xrandr", "Xi", "Xxf86vm", "Xcursor", "GL", "m", "dl", "pthread" }
 
 	filter "system:windows"
 		systemversion "latest"
