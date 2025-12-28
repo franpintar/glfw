@@ -77,7 +77,7 @@ project "GLFW"
 
 	filter "system:macosx"
 		pic "On"
-		systemversion "latest"
+		systemversion "12.0"
 		staticruntime "On"
 
 		files
