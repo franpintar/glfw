@@ -7,9 +7,9 @@ project "GLFW"
 
 	files
 	{
-		"src/glfw_config.h",
-		"include/GLFW/glfw3.h",
-		"include/GLFW/glfw3native.h",
+		"glfw_config.h",
+		"GLFW/glfw3.h",
+		"GLFW/glfw3native.h",
 		"src/init.c",
 		"src/input.c",
 		"src/monitor.c",
@@ -27,13 +27,13 @@ project "GLFW"
 
 		files
 		{
-			"src/x11_platform.h",
-			"src/x11_unicode.h",
-			"src/posix_time.h",
-			"src/posix_thread.h",
-			"src/glx_context.h",
-			"src/egl_context.h",
-			"src/osmesa_context.h",
+			"x11_platform.h",
+			"x11_unicode.h",
+			"posix_time.h",
+			"posix_thread.h",
+			"glx_context.h",
+			"egl_context.h",
+			"osmesa_context.h",
 			--
 			"src/x11_init.c",
 			"src/x11_monitor.c",
@@ -45,7 +45,7 @@ project "GLFW"
 			"src/egl_context.c",
 			"src/osmesa_context.c",
 			--
-			"src/linux_joystick.h",
+			"linux_joystick.h",
 			"src/linux_joystick.c"
 		}
 
@@ -73,6 +73,40 @@ project "GLFW"
 		{ 
 			"_GLFW_WIN32",
 			"_CRT_SECURE_NO_WARNINGS"
+		}
+
+	filter "system:macosx"
+		pic "On"
+		systemversion "latest"
+		staticruntime "On"
+
+		files
+		{
+			"cocoa_platform.h",
+			"cocoa_joystick.h",
+			"posix_thread.h",
+			"nsgl_context.h",
+			"egl_context.h",
+			"osmesa_context.h",
+			--
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_window.m",
+			"src/cocoa_time.c",
+			"src/posix_thread.c",
+			"src/nsgl_context.m",
+			"src/egl_context.c",
+			"src/osmesa_context.c"
+		}
+
+		defines  { "_GLFW_COCOA" }
+
+		links
+		{
+			"Cocoa.framework",
+			"IOKit.framework",
+			"CoreFoundation.framework"
 		}
 
 	filter "configurations:Debug"
