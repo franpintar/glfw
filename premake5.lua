@@ -7,16 +7,18 @@ project "GLFW"
 
 	files
 	{
+		"src/glfw_config.h",
 		"include/GLFW/glfw3.h",
 		"include/GLFW/glfw3native.h",
-		"src/glfw_config.h",
-		"src/context.c",
 		"src/init.c",
 		"src/input.c",
 		"src/monitor.c",
 		"src/vulkan.c",
 		"src/window.c"
 	}
+
+	includedirs { "include", "src" }
+
 	filter "system:linux"
 		pic "On"
 
@@ -25,6 +27,14 @@ project "GLFW"
 
 		files
 		{
+			"src/x11_platform.h",
+			"src/x11_unicode.h",
+			"src/posix_time.h",
+			"src/posix_thread.h",
+			"src/glx_context.h",
+			"src/egl_context.h",
+			"src/osmesa_context.h",
+			--
 			"src/x11_init.c",
 			"src/x11_monitor.c",
 			"src/x11_window.c",
@@ -34,6 +44,8 @@ project "GLFW"
 			"src/glx_context.c",
 			"src/egl_context.c",
 			"src/osmesa_context.c",
+			--
+			"src/linux_joystick.h",
 			"src/linux_joystick.c"
 		}
 
